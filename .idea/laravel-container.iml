@@ -122,7 +122,10 @@
       <excludeFolder url="file://$MODULE_DIR$/src/vendor/evenement/evenement" />
       <excludeFolder url="file://$MODULE_DIR$/src/vendor/fidry/cpu-core-counter" />
       <excludeFolder url="file://$MODULE_DIR$/src/vendor/friendsofphp/php-cs-fixer" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/lcobucci/clock" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/lcobucci/jwt" />
       <excludeFolder url="file://$MODULE_DIR$/src/vendor/phpstan/phpstan" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/predis/predis" />
       <excludeFolder url="file://$MODULE_DIR$/src/vendor/react/cache" />
       <excludeFolder url="file://$MODULE_DIR$/src/vendor/react/child-process" />
       <excludeFolder url="file://$MODULE_DIR$/src/vendor/react/dns" />
@@ -131,11 +134,16 @@
       <excludeFolder url="file://$MODULE_DIR$/src/vendor/react/socket" />
       <excludeFolder url="file://$MODULE_DIR$/src/vendor/react/stream" />
       <excludeFolder url="file://$MODULE_DIR$/src/vendor/rector/rector" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/saloonphp/pagination-plugin" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/saloonphp/saloon" />
       <excludeFolder url="file://$MODULE_DIR$/src/vendor/symfony/filesystem" />
       <excludeFolder url="file://$MODULE_DIR$/src/vendor/symfony/options-resolver" />
       <excludeFolder url="file://$MODULE_DIR$/src/vendor/symfony/polyfill-php81" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/symfony/polyfill-php84" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/symfony/polyfill-php85" />
       <excludeFolder url="file://$MODULE_DIR$/src/vendor/symfony/stopwatch" />
       <excludeFolder url="file://$MODULE_DIR$/src/vendor/symplify/easy-coding-standard" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/tymon/jwt-auth" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
