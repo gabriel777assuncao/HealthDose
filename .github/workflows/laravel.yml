@@ -14,6 +14,22 @@ jobs:
 
       - name: Set up Docker
         run: docker compose up -d --build
+        
+      - name: Prepare .env file
+        working-directory: ./src
+        run: cp .env.example .env
+
+      - name: Prepare vendor directory
+        working-directory: ./src
+        run: docker compose run --rm php sh -c "mkdir -p vendor && chmod -R 777 vendor"
+
+      - name: Install Composer Dependencies
+        working-directory: ./src
+        run: docker compose run --rm composer install --no-interaction --prefer-dist --no-progress --no-scripts
+
+      - name: Set Directory Permissions
+        working-directory: ./src
+        run: docker compose run --rm php chmod -R 777 storage bootstrap/cache vendor
 
       - name: Prepare .env file
         working-directory: ./src
