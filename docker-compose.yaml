@@ -15,6 +15,7 @@ services:
     build:
       context: .
       dockerfile: docker-files/php.dockerfile
+    user: root
     volumes:
       - ./src:/var/www/html:delegated
   mysql:
@@ -27,6 +28,7 @@ services:
       dockerfile: composer.dockerfile
     volumes:
       - ./src:/var/www/html
+    user: root
   artisan:
     build:
       context: .
@@ -34,6 +36,7 @@ services:
     volumes:
       - ./src:/var/www/html
     entrypoint: ["php", "/var/www/html/artisan"]
+    user: root
   npm:
     image: node:14
     working_dir: /var/www/html
