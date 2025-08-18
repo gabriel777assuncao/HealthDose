@@ -15,6 +15,7 @@ services:
     build:
       context: .
       dockerfile: docker-files/php.dockerfile
+    user: root
     volumes:
       - ./src:/var/www/html:delegated
   mysql:
