@@ -28,6 +28,7 @@ services:
       dockerfile: composer.dockerfile
     volumes:
       - ./src:/var/www/html
+    user: root
   artisan:
     build:
       context: .
