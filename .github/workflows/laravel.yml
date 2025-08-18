@@ -1,0 +1,67 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [ "main", "develop" ]
+
+jobs:
+  laravel-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Ajustar permissões da pasta src no runner
+        run: sudo chmod -R 777 ./src
+
+      - name: Build and start containers
+        run: docker compose up -d --build
+
+      - name: Prepare .env file
+        working-directory: ./src
+        run: |
+          if [ ! -f .env ]; then cp .env.example .env; fi
+
+      - name: Prepare vendor directory
+        working-directory: ./src
+        run: mkdir -p vendor
+
+      - name: Install Composer Dependencies
+        working-directory: ./src
+        run: docker compose run --rm composer install --no-interaction --prefer-dist --no-progress --no-scripts
+
+      - name: Set Permissions for storage, bootstrap/cache and vendor
+        working-directory: ./src
+        run: docker compose run --rm php chmod -R 777 storage bootstrap/cache vendor
+
+      - name: Generate Application Key
+        working-directory: ./src
+        run: docker compose run --rm artisan key:generate
+
+      - name: Create SQLite Database File
+        working-directory: ./src
+        run: docker compose run --rm php sh -c "mkdir -p database && touch database/database.sqlite"
+
+      - name: Install Node Dependencies
+        working-directory: ./src
+        run: docker compose run --rm npm install
+
+      - name: Build Frontend Assets
+        working-directory: ./src
+        run: docker compose run --rm npm run build
+
+      - name: Run Laravel Tests (SQLite)
+        working-directory: ./src
+        env:
+          DB_CONNECTION: sqlite
+          DB_DATABASE: /var/www/html/database/database.sqlite
+        run: docker compose run --rm artisan test --parallel
+
+      - name: Run Rector (Code Style Fix)
+        working-directory: ./src
+        run: vendor/bin/rector
+
+      - name: Run ECS (Code Style Fix)
+        working-directory: ./src
+        run: vendor/bin/ecs --fix
