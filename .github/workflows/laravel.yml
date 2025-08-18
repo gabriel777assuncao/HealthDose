@@ -58,10 +58,10 @@ jobs:
           DB_DATABASE: /var/www/html/database/database.sqlite
         run: docker compose run --rm artisan test --parallel
 
-      - name: Run Rector (PHPStan)
+      - name: Run Rector (Code Style Fix)
         working-directory: ./src
-        run: docker compose run --rm php vendor/bin/rector
+        run: vendor/bin/rector
 
       - name: Run ECS (Code Style Fix)
         working-directory: ./src
-        run: docker compose run --rm php vendor/bin/ecs --fix
+        run: vendor/bin/ecs --fix
