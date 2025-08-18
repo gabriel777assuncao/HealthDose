@@ -128,9 +128,26 @@
       <path value="$PROJECT_DIR$/src/vendor/symfony/deprecation-contracts" />
       <path value="$PROJECT_DIR$/src/vendor/phpunit/phpunit" />
       <path value="$PROJECT_DIR$/src/vendor/symfony/string" />
+      <path value="$PROJECT_DIR$/src/vendor/rector/rector" />
+      <path value="$PROJECT_DIR$/src/vendor/phpstan/phpstan" />
+      <path value="$PROJECT_DIR$/src/vendor/fidry/cpu-core-counter" />
+      <path value="$PROJECT_DIR$/src/vendor/symplify/easy-coding-standard" />
+      <path value="$PROJECT_DIR$/src/vendor/brianium/paratest" />
+      <path value="$PROJECT_DIR$/src/vendor/jean85/pretty-package-versions" />
+      <path value="$PROJECT_DIR$/src/vendor/archtechx/enums" />
+      <path value="$PROJECT_DIR$/src/vendor/symfony/polyfill-php85" />
+      <path value="$PROJECT_DIR$/src/vendor/symfony/polyfill-php84" />
+      <path value="$PROJECT_DIR$/src/vendor/tymon/jwt-auth" />
+      <path value="$PROJECT_DIR$/src/vendor/lcobucci/clock" />
+      <path value="$PROJECT_DIR$/src/vendor/lcobucci/jwt" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.2" />
+  <component name="PhpStan">
+    <PhpStan_settings>
+      <PhpStanConfiguration tool_path="$PROJECT_DIR$/src/vendor/bin/phpstan" />
+    </PhpStan_settings>
+  </component>
   <component name="PhpStanOptionsConfiguration">
     <option name="transferred" value="true" />
   </component>
