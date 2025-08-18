@@ -12,43 +12,32 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
 
-      - name: Set up Docker
-        run: docker compose up -d --build
-
-      - name: Fix src permissions on runner
+      - name: Ajustar permissões da pasta src no runner
         run: sudo chmod -R 777 ./src
+
+      - name: Build and start containers
+        run: docker compose up -d --build
 
       - name: Prepare .env file
         working-directory: ./src
-        run: cp .env.example .env
+        run: |
+          if [ ! -f .env ]; then cp .env.example .env; fi
 
       - name: Prepare vendor directory
         working-directory: ./src
-        run: docker compose run --rm php sh -c "mkdir -p vendor && chmod -R 777 vendor"
+        run: mkdir -p vendor
 
       - name: Install Composer Dependencies
         working-directory: ./src
         run: docker compose run --rm composer install --no-interaction --prefer-dist --no-progress --no-scripts
 
-      - name: Set Directory Permissions
+      - name: Set Permissions for storage, bootstrap/cache and vendor
         working-directory: ./src
         run: docker compose run --rm php chmod -R 777 storage bootstrap/cache vendor
-
-      - name: Prepare .env file
-        working-directory: ./src
-        run: cp .env.example .env
-
-      - name: Install Composer Dependencies
-        working-directory: ./src
-        run: docker compose run --rm composer install --no-interaction --prefer-dist --no-progress --no-scripts
 
       - name: Generate Application Key
         working-directory: ./src
         run: docker compose run --rm artisan key:generate
-
-      - name: Set Directory Permissions
-        working-directory: ./src
-        run: docker compose run --rm php chmod -R 777 storage bootstrap/cache
 
       - name: Create SQLite Database File
         working-directory: ./src
@@ -64,15 +53,15 @@ jobs:
 
       - name: Run Laravel Tests (SQLite)
         working-directory: ./src
-        run: docker compose run --rm artisan test --parallel
         env:
           DB_CONNECTION: sqlite
           DB_DATABASE: /var/www/html/database/database.sqlite
+        run: docker compose run --rm artisan test --parallel
 
       - name: Run Rector (PHPStan)
         working-directory: ./src
-        run: vendor/bin/rector
+        run: docker compose run --rm php vendor/bin/rector
 
-      - name: Run ECS (Code Style)
+      - name: Run ECS (Code Style Fix)
         working-directory: ./src
-        run: vendor/bin/ecs --fix
+        run: docker compose run --rm php vendor/bin/ecs --fix
