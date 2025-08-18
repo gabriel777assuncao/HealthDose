@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Schema;
 return new class() extends Migration {
     public function up(): void
     {
-//        dd(Roles::cases());
         Schema::table('users', function (Blueprint $table) {
             $table->string('username')->default()->after('name');
             $table->string('cellphone')->nullable();

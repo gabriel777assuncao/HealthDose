@@ -2,8 +2,7 @@
 
 namespace App\Enums\Users;
 
-use ArchTech\Enums\InvokableCases;
-use ArchTech\Enums\Values;
+use ArchTech\Enums\{InvokableCases, Values};
 
 enum Roles: string
 {
