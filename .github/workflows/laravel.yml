@@ -14,7 +14,10 @@ jobs:
 
       - name: Set up Docker
         run: docker compose up -d --build
-        
+
+      - name: Fix src permissions on runner
+        run: sudo chmod -R 777 ./src
+
       - name: Prepare .env file
         working-directory: ./src
         run: cp .env.example .env
