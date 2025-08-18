@@ -61,7 +61,6 @@ return static function (RectorConfig $rectorConfig): void {
     $rectorConfig->cacheClass(FileCacheStorage::class);
     $rectorConfig->importShortClasses(false);
     $rectorConfig->importNames();
-    $rectorConfig->cacheDirectory(__DIR__ . '/.rector-cache');
 
     $rectorConfig->rule(AddTypeToConstRector::class);
     $rectorConfig->rule(AddVoidReturnTypeWhereNoReturnRector::class);
