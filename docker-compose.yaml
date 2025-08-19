@@ -3,6 +3,7 @@ version: "3.8"
 services:
   server:
     image: 'nginx:stable-alpine'
+    container_name: healthdose-nginx-server
     ports:
       - '8000:80'
     volumes:
@@ -12,6 +13,7 @@ services:
       - php
       - postgres
   php:
+    container_name: healthdose-php
     build:
       context: .
       dockerfile: docker-files/php.dockerfile
@@ -20,13 +22,21 @@ services:
       - ./src:/var/www/html:delegated
   postgres:
     image: postgres:15
+    container_name: healthdose-postgres
     env_file:
       - ./env/postgres.env
     ports:
       - '5432:5432'
     volumes:
       - postgres_data:/var/lib/postgresql/data
+  mailcatcher:
+    container_name: healthdose-mailcatcher
+    image: schickling/mailcatcher
+    ports:
+      - "1025"
+      - "83:1080"
   composer:
+    container_name: healthdose-composer
     build:
       context: ./docker-files
       dockerfile: composer.dockerfile
@@ -34,6 +44,7 @@ services:
       - ./src:/var/www/html
     user: root
   artisan:
+    container_name: healthdose-artisan
     build:
       context: .
       dockerfile: docker-files/php.dockerfile
