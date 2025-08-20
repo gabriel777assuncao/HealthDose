@@ -124,6 +124,8 @@
       <excludeFolder url="file://$MODULE_DIR$/src/vendor/symfony/polyfill-php84" />
       <excludeFolder url="file://$MODULE_DIR$/src/vendor/symfony/polyfill-php85" />
       <excludeFolder url="file://$MODULE_DIR$/src/vendor/tymon/jwt-auth" />
+      <excludeFolder url="file://$MODULE_DIR$/src/storage/app" />
+      <excludeFolder url="file://$MODULE_DIR$/src/storage/framework" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
