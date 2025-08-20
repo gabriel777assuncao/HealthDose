@@ -11,7 +11,8 @@ use Tymon\JWTAuth\Facades\JWTAuth;
 
 class AuthController extends Controller
 {
-    public function __construct(private readonly User $user){
+    public function __construct(private readonly User $user)
+    {
     }
 
     public function register(RegisterRequest $request): JsonResponse

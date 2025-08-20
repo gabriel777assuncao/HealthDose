@@ -3,15 +3,14 @@
 namespace Feature;
 
 use App\Models\User;
-use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Foundation\Testing\{LazilyRefreshDatabase, WithFaker};
 use Symfony\Component\HttpFoundation\Response;
 use Tests\TestCase;
 
 class AuthControllerTest extends TestCase
 {
-    use WithFaker;
     use LazilyRefreshDatabase;
+    use WithFaker;
 
     private User $user;
 
@@ -53,7 +52,7 @@ class AuthControllerTest extends TestCase
     {
         $response = $this->postJson('/api/auth/login', [
             'email' => $this->user->email,
-            'password' => 'password'
+            'password' => 'password',
         ]);
 
         $response->assertStatus(Response::HTTP_OK);
@@ -67,7 +66,7 @@ class AuthControllerTest extends TestCase
     {
         $response = $this->postJson('/api/auth/login', [
             'email' => $this->user->email,
-            'password' => 'aaaaaaaaaaaa'
+            'password' => 'aaaaaaaaaaaa',
         ]);
 
         $response->assertStatus(Response::HTTP_UNAUTHORIZED);
@@ -77,7 +76,7 @@ class AuthControllerTest extends TestCase
     {
         $this->postJson('/api/auth/login', [
             'email' => $this->user->email,
-            'password' => 'password'
+            'password' => 'password',
         ]);
 
         $response = $this->postJson('/api/auth/logout');
@@ -91,7 +90,7 @@ class AuthControllerTest extends TestCase
     {
         $this->postJson('/api/auth/login', [
             'email' => $this->user->email,
-            'password' => 'password'
+            'password' => 'password',
         ]);
 
         $response = $this->postJson('/api/auth/refresh');
