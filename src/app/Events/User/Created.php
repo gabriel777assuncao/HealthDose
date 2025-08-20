@@ -11,8 +11,4 @@ class Created
     use Dispatchable;
     use InteractsWithSockets;
     use SerializesModels;
-
-    public function __construct()
-    {
-    }
 }

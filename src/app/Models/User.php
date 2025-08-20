@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Events\User\Created;
 use Illuminate\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -18,6 +19,7 @@ class User extends Authenticatable implements JWTSubject
 
     protected $fillable = [
         'name',
+        'username',
         'email',
         'password',
         'cellphone',
@@ -35,6 +37,10 @@ class User extends Authenticatable implements JWTSubject
             'password' => 'hashed',
         ];
     }
+
+    protected $dispatchesEvents = [
+        'created' => Created::class,
+    ];
 
     public function getJWTIdentifier(): mixed
     {
