@@ -5,6 +5,7 @@ namespace Feature;
 use App\Models\User;
 use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Symfony\Component\HttpFoundation\Response;
 use Tests\TestCase;
 
 class AuthControllerTest extends TestCase
@@ -36,7 +37,7 @@ class AuthControllerTest extends TestCase
             'cellphone' => $this->faker->phoneNumber,
         ]);
 
-        $response->assertStatus(201);
+        $response->assertStatus(Response::HTTP_CREATED);
         $response->assertJsonFragment([
             'message' => 'user created successfully',
         ]);
@@ -55,11 +56,21 @@ class AuthControllerTest extends TestCase
             'password' => 'password'
         ]);
 
-        $response->assertStatus(200);
+        $response->assertStatus(Response::HTTP_OK);
         $response->assertJsonFragment([
             'token' => $response->json('token'),
             'token_type' => $response->json('token_type'),
         ]);
+    }
+
+    public function test_if_user_will_be_unauthorized_with_fake_credentials(): void
+    {
+        $response = $this->postJson('/api/auth/login', [
+            'email' => $this->user->email,
+            'password' => 'aaaaaaaaaaaa'
+        ]);
+
+        $response->assertStatus(Response::HTTP_UNAUTHORIZED);
     }
 
     public function test_if_user_can_logout(): void
@@ -70,7 +81,7 @@ class AuthControllerTest extends TestCase
         ]);
 
         $response = $this->postJson('/api/auth/logout');
-        $response->assertStatus(200);
+        $response->assertStatus(Response::HTTP_OK);
         $response->assertJsonFragment([
             'message' => 'Successfully logged out',
         ]);
@@ -84,7 +95,7 @@ class AuthControllerTest extends TestCase
         ]);
 
         $response = $this->postJson('/api/auth/refresh');
-        $response->assertStatus(200);
+        $response->assertStatus(Response::HTTP_OK);
         $response->assertJsonFragment([
             'token' => $response->json('token'),
             'token_type' => $response->json('token_type'),
