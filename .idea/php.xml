@@ -140,6 +140,23 @@
       <path value="$PROJECT_DIR$/src/vendor/tymon/jwt-auth" />
       <path value="$PROJECT_DIR$/src/vendor/lcobucci/clock" />
       <path value="$PROJECT_DIR$/src/vendor/lcobucci/jwt" />
+      <path value="$PROJECT_DIR$/src/vendor/react/event-loop" />
+      <path value="$PROJECT_DIR$/src/vendor/react/socket" />
+      <path value="$PROJECT_DIR$/src/vendor/react/stream" />
+      <path value="$PROJECT_DIR$/src/vendor/react/cache" />
+      <path value="$PROJECT_DIR$/src/vendor/react/child-process" />
+      <path value="$PROJECT_DIR$/src/vendor/react/dns" />
+      <path value="$PROJECT_DIR$/src/vendor/react/promise" />
+      <path value="$PROJECT_DIR$/src/vendor/evenement/evenement" />
+      <path value="$PROJECT_DIR$/src/vendor/symfony/polyfill-php81" />
+      <path value="$PROJECT_DIR$/src/vendor/symfony/options-resolver" />
+      <path value="$PROJECT_DIR$/src/vendor/symfony/filesystem" />
+      <path value="$PROJECT_DIR$/src/vendor/symfony/stopwatch" />
+      <path value="$PROJECT_DIR$/src/vendor/clue/ndjson-react" />
+      <path value="$PROJECT_DIR$/src/vendor/friendsofphp/php-cs-fixer" />
+      <path value="$PROJECT_DIR$/src/vendor/saloonphp/saloon" />
+      <path value="$PROJECT_DIR$/src/vendor/saloonphp/pagination-plugin" />
+      <path value="$PROJECT_DIR$/src/vendor/predis/predis" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.2" />
