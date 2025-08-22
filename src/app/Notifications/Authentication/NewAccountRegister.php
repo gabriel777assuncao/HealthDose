@@ -24,7 +24,7 @@ class NewAccountRegister extends Notification implements ShouldQueue
 
     public function toMail(object $notifiable): MailMessage
     {
-        return (new MailMessage())
+        return new MailMessage()
             ->subject(__('notifications.account.welcome.subject'))
             ->greeting(__('notifications.common.greeting', ['name' => $notifiable->name]))
             ->markdown('emails.notification', [

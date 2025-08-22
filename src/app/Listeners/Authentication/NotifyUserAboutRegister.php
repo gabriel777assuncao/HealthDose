@@ -9,7 +9,8 @@ use Psr\Log\LoggerInterface;
 
 class NotifyUserAboutRegister implements ShouldQueue
 {
-    public function __construct(private readonly LoggerInterface $logger){
+    public function __construct(private readonly LoggerInterface $logger)
+    {
     }
 
     public function handle(Created $event): void

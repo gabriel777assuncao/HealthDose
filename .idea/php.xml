@@ -159,7 +159,7 @@
       <path value="$PROJECT_DIR$/src/vendor/predis/predis" />
     </include_path>
   </component>
-  <component name="PhpProjectSharedConfiguration" php_language_level="8.2" />
+  <component name="PhpProjectSharedConfiguration" php_language_level="8.4" />
   <component name="PhpStan">
     <PhpStan_settings>
       <PhpStanConfiguration tool_path="$PROJECT_DIR$/src/vendor/bin/phpstan" />

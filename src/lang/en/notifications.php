@@ -1,5 +1,5 @@
 <?php
-// resources/lang/pt_BR/notifications.php
+
 return [
     'common' => [
         'greeting' => 'Prezado(a) :name,',
