@@ -39,6 +39,10 @@ jobs:
         working-directory: ./src
         run: docker compose run --rm artisan key:generate
 
+      - name: Generate jwt Key
+        working-directory: ./src
+        run: docker compose run --rm artisan jwt:secret
+
       - name: Create SQLite Database File
         working-directory: ./src
         run: docker compose run --rm php sh -c "mkdir -p database && touch database/database.sqlite"

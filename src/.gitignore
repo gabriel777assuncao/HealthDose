@@ -25,3 +25,5 @@ Thumbs.db
 .rector-cache
 .rector-cache/
 *.rector-cache
+
+/storage/

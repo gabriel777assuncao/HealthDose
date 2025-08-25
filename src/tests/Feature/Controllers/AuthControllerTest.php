@@ -3,7 +3,9 @@
 namespace Feature;
 
 use App\Models\User;
+use App\Notifications\Authentication\NewAccountRegister;
 use Illuminate\Foundation\Testing\{LazilyRefreshDatabase, WithFaker};
+use Illuminate\Support\Facades\{Notification};
 use Symfony\Component\HttpFoundation\Response;
 use Tests\TestCase;
 
@@ -17,6 +19,7 @@ class AuthControllerTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
+        Notification::fake();
 
         $this->user = User::factory()->create([
             'name' => 'Test User',
@@ -99,5 +102,21 @@ class AuthControllerTest extends TestCase
             'token' => $response->json('token'),
             'token_type' => $response->json('token_type'),
         ]);
+    }
+
+    public function test_if_user_will_receive_register_notification_profile(): void
+    {
+        $this->postJson('/api/auth/register', [
+            'name' => 'Test User',
+            'email' => $this->faker->unique()->safeEmail,
+            'username' => $this->faker->userName,
+            'password' => $this->faker->password,
+            'cellphone' => $this->faker->phoneNumber,
+        ]);
+
+        Notification::assertSentTo(
+            $this->user,
+            NewAccountRegister::class,
+        );
     }
 }
