@@ -18,7 +18,7 @@ class ChangeCredentialsController extends Controller
     {
         $validated = $request->validated();
         $user = User::where('email', $validated['email'])->first();
-        $cacheKey = self::RESET_TOKEN_CACHE_KEY.':'.$validated['email'];
+        $cacheKey = self::RESET_TOKEN_CACHE_KEY.$validated['email'];
         $cachedToken = Cache::get($cacheKey);
 
         if (! $cachedToken || ! Hash::check($validated['token'], $cachedToken)) {

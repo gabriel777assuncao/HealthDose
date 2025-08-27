@@ -31,11 +31,14 @@ class AuthControllerTest extends TestCase
 
     public function test_if_user_can_register(): void
     {
+        $password = '35314131aSd@.dsadsa41';
+
         $response = $this->postJson('/api/auth/register', [
             'name' => 'Test User',
             'email' => $this->faker->unique()->safeEmail,
             'username' => $this->faker->userName,
-            'password' => $this->faker->password,
+            'password' => $password,
+            'password_confirmation' => $password,
             'cellphone' => $this->faker->phoneNumber,
         ]);
 
