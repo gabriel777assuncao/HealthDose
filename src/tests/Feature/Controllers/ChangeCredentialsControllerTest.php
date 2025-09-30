@@ -33,6 +33,8 @@ class ChangeCredentialsControllerTest extends TestCase
             'email' => $this->user->email,
         ]);
 
+
+        //        dd($response->json());
         $response->assertStatus(Response::HTTP_OK)
             ->assertJsonStructure(['message', 'token']);
     }

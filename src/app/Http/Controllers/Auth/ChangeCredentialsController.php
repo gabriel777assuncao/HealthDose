@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\{ResetPasswordRequest, SendResetLinkRequest};
 use App\Models\User;
+use App\Notifications\Authentication\{NotifyAboutChangeCredentials};
 use Illuminate\Http\{JsonResponse};
 use Illuminate\Support\Facades\{Cache, Hash};
 use Illuminate\Support\Str;
@@ -69,9 +70,11 @@ class ChangeCredentialsController extends Controller
             );
         }
 
+        $user->notify(new NotifyAboutChangeCredentials($user, $token));
+
         return response()->json(
             [
-                'message' => 'Token was sent to your email.',
+                'message' => 'Token was sent to email.',
                 'token' => $token,
             ],
             Response::HTTP_OK,
