@@ -2,10 +2,6 @@
 ?>
 
 @component('mail::message')
-    # {{ $title }}
-
-    {{ $intro }}
-
     @isset($details)
         {{ $details }}
     @endisset

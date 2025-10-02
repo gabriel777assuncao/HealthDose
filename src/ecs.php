@@ -46,7 +46,7 @@ return static function (EcsConfig $ecsConfig): void {
         SingleQuoteFixer::class,
         SingleSpaceAroundConstructFixer::class,
     ]);
-
+    
     $ecsConfig->paths([
         __DIR__.'/app',
         __DIR__.'/tests',
