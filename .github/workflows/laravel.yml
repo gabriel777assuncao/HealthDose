@@ -64,8 +64,8 @@ jobs:
 
       - name: Run Rector (Code Style Fix)
         working-directory: ./src
-        run: vendor/bin/rector
+        run: docker compose run --rm php ./vendor/bin/rector
 
       - name: Run ECS (Code Style Fix)
         working-directory: ./src
-        run: vendor/bin/ecs --fix
+        run: docker compose run --rm php ./vendor/bin/ecs --fix
