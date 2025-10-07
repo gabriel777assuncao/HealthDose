@@ -12,10 +12,10 @@ class QuestionAnswerFactory extends Factory
     public function definition(): array
     {
         return [
-            'body'          => $this->faker->paragraph(),
-            'like_count'    => $this->faker->numberBetween(0, 10),
+            'body' => $this->faker->paragraph(),
+            'like_count' => $this->faker->numberBetween(0, 10),
             'dislike_count' => $this->faker->numberBetween(0, 5),
-            'is_accepted'   => false,
+            'is_accepted' => false,
         ];
     }
 }

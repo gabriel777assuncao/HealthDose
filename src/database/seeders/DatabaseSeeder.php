@@ -2,9 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
-use Database\Factories\QuestionAnswerFactory;
-use Database\Factories\QuestionFactory;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder

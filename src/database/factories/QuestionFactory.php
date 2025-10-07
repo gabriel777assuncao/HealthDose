@@ -12,12 +12,12 @@ class QuestionFactory extends Factory
     public function definition(): array
     {
         return [
-            'title'         => $this->faker->sentence(),
-            'body'          => $this->faker->paragraph(),
-            'view_count'    => $this->faker->numberBetween(0, 50),
-            'like_count'    => $this->faker->numberBetween(0, 20),
+            'title' => $this->faker->sentence(),
+            'body' => $this->faker->paragraph(),
+            'view_count' => $this->faker->numberBetween(0, 50),
+            'like_count' => $this->faker->numberBetween(0, 20),
             'dislike_count' => $this->faker->numberBetween(0, 10),
-            'reply_count'   => 0,
+            'reply_count' => 0,
         ];
     }
 }

@@ -2,11 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Question;
-use App\Models\QuestionAnswer;
-use App\Models\User;
-use Database\Factories\QuestionAnswerFactory;
-use Database\Factories\QuestionFactory;
+use App\Models\{Question, QuestionAnswer, User};
 use Illuminate\Database\Seeder;
 
 class QuestionSeeder extends Seeder
@@ -21,7 +17,9 @@ class QuestionSeeder extends Seeder
             ->has(
                 QuestionAnswer::factory()
                     ->count(3)
-                    ->state(fn () => ['user_id' => $users->random()->id]),'answers')
+                    ->state(fn () => ['user_id' => $users->random()->id]),
+                'answers'
+            )
             ->create();
     }
 }
